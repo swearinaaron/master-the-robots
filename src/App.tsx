@@ -41,11 +41,7 @@ function App() {
               <Features />
             </>
           )}
-          {currentPage === 'courses' && (
-            <ProtectedRoute>
-              <CoursesPage />
-            </ProtectedRoute>
-          )}
+          {currentPage === 'courses' && <CoursesPage />}
           {currentPage === 'profile' && <ProfilePage />}
           {currentPage === 'podcast' && <PodcastPage />}
           {currentPage === 'blog' && <BlogPage />}
