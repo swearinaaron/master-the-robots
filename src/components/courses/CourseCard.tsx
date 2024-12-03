@@ -22,6 +22,14 @@ export function CourseCard({
   studentsCount = 1000,
   udemy_url = "#"
 }: CourseCardProps) {
+  console.log('Rendering CourseCard:', { 
+    title, 
+    imageUrl, 
+    difficulty_level,
+    price,
+    rating 
+  });
+
   return (
     <div className="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105">
       <div className="relative aspect-video bg-gray-100">
