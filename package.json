@@ -4,9 +4,12 @@
   "engines": {
     "node": "20.x"
   },
+  "dependencies": {
+    "typescript": "^5.7.2"
+  },
   "scripts": {
     "start": "cd server && node dist/index.js",
     "build": "cd server && npm install && tsc",
-    "heroku-postbuild": "cd server && npm install && tsc"
+    "heroku-postbuild": "cd server && npm install && npm run build"
   }
 }
