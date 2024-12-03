@@ -9,6 +9,9 @@ dotenv.config();
 // Initialize express app
 const app = express();
 
+// Parse PORT from environment variable
+const PORT = parseInt(process.env.PORT || '3000', 10);
+
 // Database connection
 const pool = new Pool(
   process.env.DATABASE_URL 
@@ -80,7 +83,6 @@ app.get('/api/profile/:userId', async (req: Request, res: Response) => {
 });
 
 // Start server
-const PORT = parseInt(process.env.PORT || '3000', 10);
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on port ${PORT}`);
   console.log(`Frontend URL: ${process.env.CORS_ORIGIN || 'http://localhost:5173'}`);
