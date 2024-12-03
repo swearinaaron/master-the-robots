@@ -44,11 +44,21 @@ export function CoursesPage() {
   const [courses, setCourses] = useState<Course[]>([]);
 
   useEffect(() => {
+    console.log('Fetching courses from:', `${API_URL}/api/courses`);
+    
     // Fetch courses from our API
     fetch(`${API_URL}/api/courses`)
-      .then(response => response.json())
-      .then(data => setCourses(data))
-      .catch(error => console.error('Error fetching courses:', error));
+      .then(response => {
+        console.log('Response status:', response.status);
+        return response.json();
+      })
+      .then(data => {
+        console.log('Received courses:', data);
+        setCourses(data);
+      })
+      .catch(error => {
+        console.error('Error fetching courses:', error);
+      });
   }, []);
 
   return (
@@ -91,7 +101,7 @@ export function CoursesPage() {
               key={course.id}
               title={course.title}
               description={course.description}
-              imageUrl={course.image_url}
+              imageUrl={`/img/course${course.id}.png`}
               difficulty_level={course.difficulty_level}
               price={course.price}
               rating={course.rating}
