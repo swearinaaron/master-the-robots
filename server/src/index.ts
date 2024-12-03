@@ -8,7 +8,6 @@ dotenv.config();
 
 // Initialize express app
 const app = express();
-const port = process.env.PORT || 3000;
 
 // Database connection
 const pool = new Pool(
@@ -25,7 +24,9 @@ const pool = new Pool(
 
 // Middleware
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || 'http://localhost:5173'
+  origin: process.env.CORS_ORIGIN || 'http://localhost:5173',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  credentials: true
 }));
 app.use(express.json());
 
@@ -79,8 +80,9 @@ app.get('/api/profile/:userId', async (req: Request, res: Response) => {
 });
 
 // Start server
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+const PORT = parseInt(process.env.PORT || '3000', 10);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server running on port ${PORT}`);
   console.log(`Frontend URL: ${process.env.CORS_ORIGIN || 'http://localhost:5173'}`);
   console.log('Database URL:', process.env.DATABASE_URL ? 'Set' : 'Not set');
   console.log('Environment:', process.env.NODE_ENV);
