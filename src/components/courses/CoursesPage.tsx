@@ -1,45 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { CourseCard } from './CourseCard';
 import { GraduationCap, Users, Trophy, Brain } from 'lucide-react';
 
-const courses = [
-  {
-    title: "Laying the Foundations of AI Mastery",
-    description: "Start your AI journey with fundamental concepts, principles, and practical applications. Perfect for beginners looking to understand the basics of artificial intelligence.",
-    imageUrl: "/img/course1.png",
-    price: "$79.99",
-    rating: 4.8,
-    studentsCount: 1250,
-    udemy_url: "#"
-  },
-  {
-    title: "AI in Action: Practical Tools and Applications",
-    description: "Dive into hands-on AI development using popular tools and frameworks. Learn to implement AI solutions in real-world scenarios.",
-    imageUrl: "/img/course2.png",
-    price: "$89.99",
-    rating: 4.9,
-    studentsCount: 980,
-    udemy_url: "#"
-  },
-  {
-    title: "Building AI Mastery",
-    description: "Advanced techniques and methodologies for building sophisticated AI systems. Perfect for those ready to take their AI skills to the next level.",
-    imageUrl: "/img/course3.png",
-    price: "$99.99",
-    rating: 4.7,
-    studentsCount: 750,
-    udemy_url: "#"
-  },
-  {
-    title: "AI Leadership and Strategy: Navigating the Future",
-    description: "Learn to lead AI initiatives and develop strategic frameworks for AI implementation in business contexts.",
-    imageUrl: "/img/course4.png",
-    price: "$109.99",
-    rating: 4.9,
-    studentsCount: 620,
-    udemy_url: "#"
-  }
-];
+// Type for our course data
+interface Course {
+  id: number;
+  title: string;
+  description: string;
+  image_url: string;
+  difficulty_level: string;
+  price: string;
+  rating: number;
+  students_count: number;
+  udemy_url: string;
+}
 
 const features = [
   {
@@ -65,6 +39,16 @@ const features = [
 ];
 
 export function CoursesPage() {
+  const [courses, setCourses] = useState<Course[]>([]);
+
+  useEffect(() => {
+    // Fetch courses from our API
+    fetch('http://localhost:3000/api/courses')
+      .then(response => response.json())
+      .then(data => setCourses(data))
+      .catch(error => console.error('Error fetching courses:', error));
+  }, []);
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
@@ -100,8 +84,18 @@ export function CoursesPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <h2 className="text-3xl font-bold text-gray-900 mb-8">Available Courses</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-          {courses.map((course, index) => (
-            <CourseCard key={index} {...course} />
+          {courses.map((course) => (
+            <CourseCard 
+              key={course.id}
+              title={course.title}
+              description={course.description}
+              imageUrl={course.image_url}
+              difficulty_level={course.difficulty_level}
+              price={course.price}
+              rating={course.rating}
+              studentsCount={course.students_count}
+              udemy_url={course.udemy_url}
+            />
           ))}
         </div>
       </div>

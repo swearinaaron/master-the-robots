@@ -5,6 +5,7 @@ interface CourseCardProps {
   title: string;
   description: string;
   imageUrl: string;
+  difficulty_level: string;
   price?: string;
   rating?: number;
   studentsCount?: number;
@@ -15,6 +16,7 @@ export function CourseCard({
   title,
   description,
   imageUrl,
+  difficulty_level,
   price = "$99.99",
   rating = 4.8,
   studentsCount = 1000,
