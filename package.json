@@ -1,15 +1,11 @@
 {
   "name": "master-the-robots",
   "version": "1.0.0",
-  "engines": {
-    "node": "20.x"
-  },
-  "dependencies": {
-    "typescript": "^5.7.2"
-  },
   "scripts": {
-    "start": "cd server && node dist/index.js",
-    "build": "cd server && npm install && tsc",
-    "heroku-postbuild": "cd server && npm install && npm run build"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "build:staging": "tsc && vite build --mode staging",
+    "build:prod": "tsc && vite build --mode production",
+    "preview": "vite preview"
   }
 }
