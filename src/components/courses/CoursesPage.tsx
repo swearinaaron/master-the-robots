@@ -38,12 +38,14 @@ const features = [
   }
 ];
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+
 export function CoursesPage() {
   const [courses, setCourses] = useState<Course[]>([]);
 
   useEffect(() => {
     // Fetch courses from our API
-    fetch('http://localhost:3000/api/courses')
+    fetch(`${API_URL}/api/courses`)
       .then(response => response.json())
       .then(data => setCourses(data))
       .catch(error => console.error('Error fetching courses:', error));
