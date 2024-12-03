@@ -10,7 +10,7 @@
     "build": "tsc && vite build",
     "build:staging": "tsc && vite build --mode staging",
     "build:prod": "tsc && vite build --mode production",
-    "preview": "vite preview"
+    "preview": "vite preview --port $PORT --host 0.0.0.0"
   },
   "dependencies": {
     "@auth0/auth0-react": "^2.0.0",
