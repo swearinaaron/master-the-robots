@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 
 @Entity("resources")
 export class Resource {
@@ -11,12 +11,9 @@ export class Resource {
     @Column("text")
     description!: string;
 
-    @Column()
-    type!: string;
-
-    @Column()
+    @Column("text")
     url!: string;
 
-    @CreateDateColumn()
-    created_at!: Date;
-}
+    @Column()
+    type!: string;
+} 

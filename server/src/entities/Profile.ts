@@ -1,22 +1,19 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 
 @Entity("profiles")
 export class Profile {
     @PrimaryGeneratedColumn()
     id!: number;
 
-    @Column()
+    @Column({ unique: true })
     user_id!: string;
 
-    @Column()
-    email!: string;
-
-    @Column()
+    @Column({ nullable: true })
     name!: string;
 
-    @Column()
-    avatar_url!: string;
+    @Column({ nullable: true })
+    email!: string;
 
-    @CreateDateColumn()
-    created_at!: Date;
-}
+    @Column("text", { nullable: true })
+    avatar_url!: string;
+} 

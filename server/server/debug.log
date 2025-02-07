@@ -1,0 +1,214 @@
+[2024-12-04T20:14:20.346Z] Server started on port 3000
+[2024-12-04T20:15:06.322Z] Attempting to fetch courses from database...
+[2024-12-04T20:15:06.395Z] Database error: database "aaronpickrell" does not exist
+[2024-12-04T20:15:06.430Z] Attempting to fetch courses from database...
+[2024-12-04T20:15:06.471Z] Database error: database "aaronpickrell" does not exist
+[2024-12-04T20:19:33.797Z] Server started on port 3000
+[2024-12-04T20:19:45.217Z] Server started on port 3000
+[2024-12-04T20:20:16.448Z] Test message from test-logging.ts
+[2024-12-04T20:21:17.544Z] Server started on port 3000
+[2024-12-04T20:21:19.934Z] Server started on port 3000
+[2024-12-04T20:23:19.646Z] Test message from test-logging.ts
+[2024-12-04T20:25:14.758Z] Server started on port 3000
+[2024-12-04T20:25:25.515Z] Server started on port 3000
+[2024-12-04T20:26:35.482Z] Server started on port 3000
+[2024-12-04T20:31:17.742Z] Server started on port 3000
+[2024-12-04T20:31:29.216Z] Attempting to fetch courses from database...
+[2024-12-04T20:31:29.325Z] Database error: database "aaronpickrell" does not exist
+[2024-12-04T20:31:29.351Z] Attempting to fetch courses from database...
+[2024-12-04T20:31:29.359Z] Database error: database "aaronpickrell" does not exist
+[2024-12-05T00:26:58.652Z] Database config:
+  user: aaronpickrell
+  host: localhost
+  database: master_robots
+  port: 5432
+
+[2024-12-05T00:26:58.660Z] Environment variables:
+[2024-12-05T00:26:58.660Z] DB_NAME: master_robots
+[2024-12-05T00:26:58.660Z] DB_USERNAME: aaronpickrell
+[2024-12-05T00:26:58.660Z] DB_HOST: localhost
+[2024-12-05T00:26:58.664Z] Server started on port 3000
+[2024-12-05T00:47:35.111Z] Database config:
+  user: aaronpickrell
+  host: localhost
+  database: master_robots
+  port: 5432
+
+[2024-12-05T00:47:35.113Z] Environment variables:
+[2024-12-05T00:47:35.113Z] DB_NAME: master_robots
+[2024-12-05T00:47:35.113Z] DB_USERNAME: aaronpickrell
+[2024-12-05T00:47:35.113Z] DB_HOST: localhost
+[2024-12-05T00:47:52.071Z] Database config:
+  user: aaronpickrell
+  host: localhost
+  database: master_robots
+  port: 5432
+
+[2024-12-05T00:47:52.073Z] Environment variables:
+[2024-12-05T00:47:52.073Z] DB_NAME: master_robots
+[2024-12-05T00:47:52.074Z] DB_USERNAME: aaronpickrell
+[2024-12-05T00:47:52.074Z] DB_HOST: localhost
+[2024-12-05T00:48:19.637Z] Database config:
+  user: aaronpickrell
+  host: localhost
+  database: master_robots
+  port: 5432
+
+[2024-12-05T00:48:19.639Z] Environment variables:
+[2024-12-05T00:48:19.639Z] DB_NAME: master_robots
+[2024-12-05T00:48:19.639Z] DB_USERNAME: aaronpickrell
+[2024-12-05T00:48:19.639Z] DB_HOST: localhost
+[2024-12-05T00:48:19.642Z] Server started on port 3000
+[2024-12-05T00:49:27.533Z] Database config:
+  user: aaronpickrell
+  host: localhost
+  database: master_robots
+  port: 5432
+
+[2024-12-05T00:49:27.536Z] Environment variables:
+[2024-12-05T00:49:27.536Z] DB_NAME: master_robots
+[2024-12-05T00:49:27.536Z] DB_USERNAME: aaronpickrell
+[2024-12-05T00:49:27.536Z] DB_HOST: localhost
+[2024-12-05T00:49:27.541Z] Server started on port 3000
+[2024-12-05T00:49:56.147Z] Attempting to fetch courses from database...
+[2024-12-05T00:49:56.217Z] Successfully fetched 7 courses
+[2024-12-05T00:49:56.241Z] Attempting to fetch courses from database...
+[2024-12-05T00:49:56.245Z] Successfully fetched 7 courses
+[2024-12-05T00:56:40.742Z] Database config:
+  user: aaronpickrell
+  host: localhost
+  database: master_robots
+  port: 5432
+
+[2024-12-05T00:56:40.744Z] Environment variables:
+[2024-12-05T00:56:40.744Z] DB_NAME: master_robots
+[2024-12-05T00:56:40.745Z] DB_USERNAME: aaronpickrell
+[2024-12-05T00:56:40.745Z] DB_HOST: localhost
+[2024-12-05T00:56:40.747Z] Server started on port 3000
+[2024-12-05T01:10:19.349Z] Attempting to fetch courses from database...
+[2024-12-05T01:10:19.405Z] Successfully fetched 7 courses
+[2024-12-05T01:10:19.422Z] Attempting to fetch courses from database...
+[2024-12-05T01:10:19.426Z] Successfully fetched 7 courses
+[2024-12-05T01:13:06.512Z] Database config:
+  user: aaronpickrell
+  host: localhost
+  database: master_robots
+  port: 5432
+
+[2024-12-05T01:13:06.515Z] Environment variables:
+[2024-12-05T01:13:06.516Z] DB_NAME: master_robots
+[2024-12-05T01:13:06.516Z] DB_USERNAME: aaronpickrell
+[2024-12-05T01:13:06.516Z] DB_HOST: localhost
+[2024-12-05T01:13:06.519Z] Server started on port 3000
+[2024-12-05T01:14:14.794Z] Attempting to fetch courses from database...
+[2024-12-05T01:14:14.928Z] Successfully fetched 7 courses
+[2024-12-05T01:14:26.433Z] Database config:
+  user: aaronpickrell
+  host: localhost
+  database: master_robots
+  port: 5432
+
+[2024-12-05T01:14:26.435Z] Environment variables:
+[2024-12-05T01:14:26.435Z] DB_NAME: master_robots
+[2024-12-05T01:14:26.435Z] DB_USERNAME: aaronpickrell
+[2024-12-05T01:14:26.436Z] DB_HOST: localhost
+[2024-12-05T01:14:26.438Z] Server started on port 3000
+[2024-12-05T01:19:29.954Z] Database config:
+  user: aaronpickrell
+  host: localhost
+  database: master_robots
+  port: 5432
+
+[2024-12-05T01:19:29.956Z] Environment variables:
+[2024-12-05T01:19:29.956Z] DB_NAME: master_robots
+[2024-12-05T01:19:29.956Z] DB_USERNAME: aaronpickrell
+[2024-12-05T01:19:29.957Z] DB_HOST: localhost
+[2024-12-05T01:19:29.959Z] Server started on port 3000
+[2024-12-05T01:21:58.897Z] Database config:
+  user: aaronpickrell
+  host: localhost
+  database: master_robots
+  port: 5432
+
+[2024-12-05T01:21:58.911Z] Environment variables:
+[2024-12-05T01:21:58.912Z] DB_NAME: master_robots
+[2024-12-05T01:21:58.913Z] DB_USERNAME: aaronpickrell
+[2024-12-05T01:21:58.914Z] DB_HOST: localhost
+[2024-12-05T01:21:58.918Z] Server started on port 3000
+[2024-12-05T01:25:42.734Z] Attempting to fetch courses from database...
+[2024-12-05T01:25:42.940Z] Successfully fetched 7 courses
+[2024-12-05T01:25:42.958Z] Attempting to fetch courses from database...
+[2024-12-05T01:25:42.987Z] Successfully fetched 7 courses
+[2024-12-05T01:28:20.868Z] Attempting to fetch courses from database...
+[2024-12-05T01:28:20.927Z] Successfully fetched 7 courses
+[2024-12-05T01:28:20.933Z] Attempting to fetch courses from database...
+[2024-12-05T01:28:20.936Z] Successfully fetched 7 courses
+[2024-12-05T01:28:32.757Z] Attempting to fetch courses from database...
+[2024-12-05T01:28:32.765Z] Successfully fetched 7 courses
+[2024-12-05T01:28:32.770Z] Attempting to fetch courses from database...
+[2024-12-05T01:28:32.776Z] Successfully fetched 7 courses
+[2024-12-05T01:29:20.142Z] Attempting to fetch courses from database...
+[2024-12-05T01:29:20.190Z] Successfully fetched 7 courses
+[2024-12-05T01:29:20.196Z] Attempting to fetch courses from database...
+[2024-12-05T01:29:20.197Z] Successfully fetched 7 courses
+[2024-12-05T01:31:05.031Z] Attempting to fetch courses from database...
+[2024-12-05T01:31:05.038Z] Successfully fetched 7 courses
+[2024-12-05T01:31:05.047Z] Attempting to fetch courses from database...
+[2024-12-05T01:31:05.067Z] Successfully fetched 7 courses
+[2024-12-05T01:31:49.071Z] Attempting to fetch courses from database...
+[2024-12-05T01:31:49.087Z] Successfully fetched 7 courses
+[2024-12-05T01:31:49.100Z] Attempting to fetch courses from database...
+[2024-12-05T01:31:49.105Z] Successfully fetched 7 courses
+[2024-12-05T01:35:09.530Z] Attempting to fetch courses from database...
+[2024-12-05T01:35:09.667Z] Successfully fetched 7 courses
+[2024-12-05T01:35:09.674Z] Attempting to fetch courses from database...
+[2024-12-05T01:35:09.676Z] Successfully fetched 7 courses
+[2024-12-05T01:36:27.314Z] Attempting to fetch courses from database...
+[2024-12-05T01:36:27.342Z] Successfully fetched 7 courses
+[2024-12-05T01:37:22.510Z] Attempting to fetch courses from database...
+[2024-12-05T01:37:22.521Z] Successfully fetched 7 courses
+[2024-12-05T01:37:22.524Z] Attempting to fetch courses from database...
+[2024-12-05T01:37:22.527Z] Successfully fetched 7 courses
+[2024-12-05T01:41:37.169Z] Attempting to fetch courses from database...
+[2024-12-05T01:41:37.179Z] Successfully fetched 7 courses
+[2024-12-05T01:44:46.694Z] Attempting to fetch courses from database...
+[2024-12-05T01:44:46.771Z] Successfully fetched 7 courses
+[2024-12-05T01:44:46.778Z] Attempting to fetch courses from database...
+[2024-12-05T01:44:46.784Z] Successfully fetched 7 courses
+[2024-12-05T01:45:19.888Z] Attempting to fetch courses from database...
+[2024-12-05T01:45:19.905Z] Successfully fetched 7 courses
+[2024-12-05T01:45:19.949Z] Attempting to fetch courses from database...
+[2024-12-05T01:45:19.950Z] Successfully fetched 7 courses
+[2024-12-05T01:47:17.957Z] Attempting to fetch courses from database...
+[2024-12-05T01:47:17.972Z] Successfully fetched 7 courses
+[2024-12-05T04:19:12.244Z] Database config:
+  user: aaronpickrell
+  host: localhost
+  database: master_robots
+  port: 5432
+
+[2024-12-05T04:19:12.250Z] Environment variables:
+[2024-12-05T04:19:12.250Z] DB_NAME: master_robots
+[2024-12-05T04:19:12.252Z] DB_USERNAME: aaronpickrell
+[2024-12-05T04:19:12.252Z] DB_HOST: localhost
+[2024-12-05T04:19:12.262Z] Server started on port ${PORT}
+[2024-12-05T04:19:17.610Z] Database config:
+  user: aaronpickrell
+  host: localhost
+  database: master_robots
+  port: 5432
+
+[2024-12-05T04:19:17.613Z] Environment variables:
+[2024-12-05T04:19:17.613Z] DB_NAME: master_robots
+[2024-12-05T04:19:17.613Z] DB_USERNAME: aaronpickrell
+[2024-12-05T04:19:17.613Z] DB_HOST: localhost
+[2024-12-05T04:34:57.733Z] Database config:
+  user: aaronpickrell
+  host: localhost
+  database: master_robots
+  port: 5432
+
+[2024-12-05T04:34:57.735Z] Environment variables:
+[2024-12-05T04:34:57.735Z] DB_NAME: master_robots
+[2024-12-05T04:34:57.735Z] DB_USERNAME: aaronpickrell
+[2024-12-05T04:34:57.735Z] DB_HOST: localhost

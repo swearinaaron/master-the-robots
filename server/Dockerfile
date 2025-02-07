@@ -1,17 +1,19 @@
-FROM node:22-alpine
+FROM node:18-slim
 
 WORKDIR /usr/src/app
 
-# Copy all files first
+# Install TypeScript globally
+RUN npm install -g typescript
+
+# Copy all source files
 COPY . .
 
 # Install dependencies
-RUN npm clean-install
+RUN npm install
 
-# Build the application
+# Build TypeScript
 RUN npm run build
 
-# Use $PORT from Heroku
-EXPOSE $PORT
+EXPOSE 3000
 
 CMD ["npm", "start"] 
