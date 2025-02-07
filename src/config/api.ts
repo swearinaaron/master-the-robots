@@ -1,8 +1,8 @@
 // API base URL - use environment variable for flexibility
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
-// In production, this will be something like:
-// https://master-the-robots.herokuapp.com
+// In production, this will be:
+// https://api.mastertherobots.com
 
 // API endpoints
 export const API_ENDPOINTS = {
