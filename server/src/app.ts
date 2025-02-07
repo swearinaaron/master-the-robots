@@ -5,12 +5,16 @@ import coursesRouter from './routes/courses';
 import podcastsRouter from './routes/podcasts';
 import resourcesRouter from './routes/resources';
 import profilesRouter from './routes/profiles';
+import path from 'path';
 
 const app = express();
 
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, '../../dist')));
 
 // Routes
 app.use('/courses', coursesRouter);
@@ -31,5 +35,11 @@ AppDataSource.initialize()
     .catch((error) => {
         console.error("Error initializing database:", error);
     });
+
+// The "catchall" handler: for any request that doesn't
+// match one above, send back React's index.html file.
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../../dist/index.html'));
+});
 
 export default app; 
