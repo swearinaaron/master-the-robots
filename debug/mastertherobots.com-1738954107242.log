@@ -7,7 +7,6 @@ index-86678396.js:208 Fetching courses from: https://master-the-robots.herokuapp
 index-86678396.js:208 Auth state: {isAuthenticated: false, isLoading: false, user: undefined}
 config.js:1 website config {scheme: 'clearly/v22', version: '230223', websites: {…}}
 config.js:1 website export window config
-web-client-content-script.js:2 Uncaught (in promise) Error: Access to storage is not allowed from this context.
 /#courses:1 Access to fetch at 'https://master-the-robots.herokuapp.com/courses' from origin 'https://mastertherobots.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
 index-86678396.js:208 
         
@@ -35,3 +34,4 @@ cn @ index-86678396.js:40
 (anonymous) @ index-86678396.js:40
 k @ index-86678396.js:25
 kn @ index-86678396.js:25
+web-client-content-script.js:2 Uncaught (in promise) Error: Access to storage is not allowed from this context.
