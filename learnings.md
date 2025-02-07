@@ -282,3 +282,40 @@
       - Use definite assignment assertion (!) for TypeORM-managed fields
       - Helps satisfy TypeScript strict initialization
       - Properties managed by database don't need manual initialization 
+
+12. Git File Change Detection
+    - Issues we encountered:
+      - Git sometimes doesn't detect changes even when file content changes
+      - Binary file differences can mask actual text changes
+      - Moving/renaming files can break Git's change tracking
+    
+    - Solutions we found:
+      - Adding visible changes (like comments) can force Git to recognize updates
+      - Using `git rm --cached` followed by `git add` can reset Git's tracking
+      - Sometimes need to make content changes obvious enough for Git to detect
+    
+    - Best practices learned:
+      - Make meaningful changes that Git can detect (not just whitespace)
+      - Use comments to document important changes
+      - When changing configuration, add clear version/date markers
+      - If Git isn't seeing changes, try:
+        1. Check file encoding (UTF-8)
+        2. Add obvious changes (like dated comments)
+        3. Use `git rm --cached` to reset tracking
+        4. Verify changes with `cat` before committing
+
+13. Heroku Database Configuration
+    - Always use DATABASE_URL in production
+    - Need SSL configuration for Heroku Postgres
+    - TypeORM needs specific config structure:
+      ```typescript
+      const config = process.env.DATABASE_URL ? {
+          type: "postgres",
+          url: process.env.DATABASE_URL,
+          ssl: {
+              rejectUnauthorized: false
+          }
+      } : {
+          // local config
+      };
+      ``` 
