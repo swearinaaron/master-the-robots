@@ -26,7 +26,11 @@ export function CourseCard({
     <div className="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105">
       <div className="relative aspect-video bg-gray-100">
         <img
-          src={imageUrl}
+          src={`/img/course${
+            title.includes('AI') ? '1' : 
+            title.includes('Robotics') ? '2' :
+            title.includes('Vision') ? '3' : '4'
+          }.png`}
           alt={title}
           className="w-full h-full object-cover object-center"
         />

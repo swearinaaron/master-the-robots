@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { API_ENDPOINTS } from '../../config/api';
 
 interface Podcast {
   id: number;
@@ -13,7 +14,7 @@ export function PodcastPage() {
   const [podcasts, setPodcasts] = useState<Podcast[]>([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/podcasts')
+    fetch(API_ENDPOINTS.podcasts)
       .then(response => response.json())
       .then(data => setPodcasts(data))
       .catch(error => console.error('Error fetching podcasts:', error));

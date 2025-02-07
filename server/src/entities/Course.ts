@@ -17,6 +17,18 @@ export class Course {
     @Column()
     difficulty_level!: string;
 
+    @Column({ default: "Free" })
+    price!: string;
+
+    @Column({ type: "numeric", precision: 2, scale: 1, default: 5 })
+    rating!: number;
+
+    @Column({ default: 0 })
+    students_count!: number;
+
+    @Column({ default: "#" })
+    udemy_url!: string;
+
     @CreateDateColumn()
     created_at!: Date;
 }

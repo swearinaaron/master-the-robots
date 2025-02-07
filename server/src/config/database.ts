@@ -12,23 +12,21 @@ export const AppDataSource = new DataSource({
     type: "postgres",
     host: process.env.DB_HOST || "localhost",
     port: parseInt(process.env.DB_PORT || "5432"),
-    username: process.env.DB_USER || "postgres",
+    username: process.env.DB_USERNAME || "postgres",
     password: process.env.DB_PASSWORD || "postgres",
     database: process.env.DB_NAME || "master_the_robots",
-    synchronize: true,
-    logging: true,
     entities: [Course, Podcast, Resource, Profile],
-    subscribers: [],
-    migrations: [],
+    synchronize: true,
+    dropSchema: false,
+    logging: true
 });
 
 export const connectDatabase = async () => {
-  try {
-    const connection = await AppDataSource.initialize();
-    console.log("Database connected successfully");
-    return connection;
-  } catch (error) {
-    console.error("Error connecting to database:", error);
-    throw error;
-  }
+    try {
+        await AppDataSource.initialize();
+        console.log("Database connected successfully");
+    } catch (error) {
+        console.error("Error connecting to database:", error);
+        throw error;
+    }
 }; 

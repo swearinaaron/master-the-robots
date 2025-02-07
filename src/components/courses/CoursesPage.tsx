@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { CourseCard } from './CourseCard';
 import { GraduationCap, Users, Trophy, Brain } from 'lucide-react';
+import { API_ENDPOINTS } from '../../config/api';
 
 // Type for our course data
 interface Course {
@@ -9,8 +10,9 @@ interface Course {
   description: string;
   image_url: string;
   difficulty_level: string;
+  created_at: string;
   price: string;
-  rating: number;
+  rating: string;
   students_count: number;
   udemy_url: string;
 }
@@ -38,16 +40,14 @@ const features = [
   }
 ];
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
-
 export function CoursesPage() {
   const [courses, setCourses] = useState<Course[]>([]);
 
   useEffect(() => {
-    console.log('Fetching courses from:', `${API_URL}/api/courses`);
+    console.log('Fetching courses from:', API_ENDPOINTS.courses);
     
     // Fetch courses from our API
-    fetch(`${API_URL}/api/courses`)
+    fetch(API_ENDPOINTS.courses)
       .then(response => {
         console.log('Response status:', response.status);
         return response.json();
@@ -101,10 +101,10 @@ export function CoursesPage() {
               key={course.id}
               title={course.title}
               description={course.description}
-              imageUrl={`/img/course${course.id}.png`}
+              imageUrl={course.image_url}
               difficulty_level={course.difficulty_level}
               price={course.price}
-              rating={course.rating}
+              rating={parseFloat(course.rating)}
               studentsCount={course.students_count}
               udemy_url={course.udemy_url}
             />
