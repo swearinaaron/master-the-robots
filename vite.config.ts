@@ -7,4 +7,10 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
+  preview: {
+    allowedHosts: [
+      'mastertherobots.com',
+      'www.mastertherobots.com'
+    ]
+  }
 });
