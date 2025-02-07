@@ -9,8 +9,20 @@ import path from 'path';
 
 const app = express();
 
+// Configure CORS to allow requests from frontend domain
+app.use(cors({
+    origin: [
+        'https://mastertherobots.com',
+        'https://www.mastertherobots.com',
+        // Include localhost for development
+        'http://localhost:5173'
+    ],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
+    credentials: true
+}));
+
 // Middleware
-app.use(cors());
 app.use(express.json());
 
 // Serve static files from the React app

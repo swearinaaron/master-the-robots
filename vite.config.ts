@@ -12,5 +12,9 @@ export default defineConfig({
       'mastertherobots.com',
       'www.mastertherobots.com'
     ]
+  },
+  envDir: '.',
+  define: {
+    'process.env': {}
   }
 });

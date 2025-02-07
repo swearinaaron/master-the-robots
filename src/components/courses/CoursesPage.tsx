@@ -47,9 +47,20 @@ export function CoursesPage() {
     console.log('Fetching courses from:', API_ENDPOINTS.courses);
     
     // Fetch courses from our API
-    fetch(API_ENDPOINTS.courses)
+    fetch(API_ENDPOINTS.courses, {
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
       .then(response => {
-        console.log('Response status:', response.status);
+        console.log('Response:', {
+          status: response.status,
+          statusText: response.statusText,
+          headers: Object.fromEntries(response.headers.entries())
+        });
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
         return response.json();
       })
       .then(data => {
@@ -57,7 +68,11 @@ export function CoursesPage() {
         setCourses(data);
       })
       .catch(error => {
-        console.error('Error fetching courses:', error);
+        console.error('Error fetching courses:', {
+          message: error.message,
+          error: error,
+          endpoint: API_ENDPOINTS.courses
+        });
       });
   }, []);
 
