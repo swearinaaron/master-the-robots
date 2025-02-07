@@ -11,6 +11,7 @@ RUN npm clean-install
 # Build the application
 RUN npm run build
 
-EXPOSE 3000
+# Use $PORT from Heroku
+EXPOSE $PORT
 
 CMD ["npm", "start"] 
