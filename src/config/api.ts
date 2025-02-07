@@ -1,8 +1,9 @@
 // API base URL - use environment variable for flexibility
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://api.mastertherobots.com';
 
-// In production, this will be:
-// https://api.mastertherobots.com
+// Log the API URL in production
+console.log('API_BASE_URL:', API_BASE_URL);
+console.log('VITE_API_URL:', import.meta.env.VITE_API_URL);
 
 // API endpoints
 export const API_ENDPOINTS = {
