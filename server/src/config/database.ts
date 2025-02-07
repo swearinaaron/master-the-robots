@@ -1,3 +1,4 @@
+// Updated database config for Heroku deployment - 2024-02-07
 import "reflect-metadata";
 import { DataSource } from "typeorm";
 import { Course } from "../entities/Course";
@@ -8,7 +9,21 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-export const AppDataSource = new DataSource({
+// Configuration for database connection
+// In production, we use DATABASE_URL from Heroku
+// In development, we use individual connection parameters
+const config = process.env.DATABASE_URL ? {
+    // Production configuration using Heroku's DATABASE_URL
+    type: "postgres",
+    url: process.env.DATABASE_URL,
+    entities: [Course, Podcast, Resource, Profile],
+    synchronize: true,
+    ssl: {
+        // Required for Heroku Postgres
+        rejectUnauthorized: false
+    }
+} : {
+    // Local development configuration
     type: "postgres",
     host: process.env.DB_HOST || "localhost",
     port: parseInt(process.env.DB_PORT || "5432"),
@@ -19,7 +34,9 @@ export const AppDataSource = new DataSource({
     synchronize: true,
     dropSchema: false,
     logging: true
-});
+};
+
+export const AppDataSource = new DataSource(config as any);
 
 export const connectDatabase = async () => {
     try {
@@ -29,4 +46,4 @@ export const connectDatabase = async () => {
         console.error("Error connecting to database:", error);
         throw error;
     }
-}; 
+};
