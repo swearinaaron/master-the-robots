@@ -13,7 +13,9 @@ console.log('Course API URL:', `${API_BASE_URL}/api/courses`);
 
 // API endpoints
 export const API_ENDPOINTS = {
-    base: import.meta.env.VITE_API_URL || 'http://localhost:3000',
+    base: process.env.NODE_ENV === 'production' 
+        ? 'https://master-the-robots-fe5cf20dff5e.herokuapp.com'
+        : 'http://localhost:5173',
     courses: `${API_BASE_URL}/api/courses`,
     podcasts: `${API_BASE_URL}/api/podcasts`,
     resources: `${API_BASE_URL}/api/resources`,

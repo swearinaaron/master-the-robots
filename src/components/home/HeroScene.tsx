@@ -9,9 +9,7 @@ import { API_ENDPOINTS } from '../../config/api';
 
 export function HeroScene() {
   return (
-    <Card className="w-full h-[600px] relative overflow-hidden border-0">
-      <div className="absolute inset-0 bg-gradient-to-r from-purple-600/90 to-indigo-600/90 -z-10" />
-      
+    <Card className="w-full h-[600px] bg-gradient-to-r from-purple-600/90 to-indigo-600/90 relative overflow-hidden border-0">
       <div className="flex flex-col md:flex-row min-h-screen relative">
         {/* Left content */}
         <div className="flex-1 flex items-center px-8 sm:px-16 lg:px-24 pt-24 md:pt-0 z-20">
@@ -42,10 +40,10 @@ export function HeroScene() {
         </div>
 
         {/* Right content */}
-        <div className="flex-1 relative h-[700px] md:h-auto -mt-24 md:mt-0 z-10">
+        <div className="flex-1 relative h-[800px] md:h-auto -mt-24 md:mt-0 z-10 overflow-visible">
           <SplineScene 
             scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-            className="w-full h-full scale-110"
+            className="w-full h-full scale-110 origin-center"
           />
         </div>
       </div>
