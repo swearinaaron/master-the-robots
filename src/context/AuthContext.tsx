@@ -54,12 +54,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       domain={domain}
       clientId={clientId}
       authorizationParams={{
-        redirect_uri: `${window.location.origin}/callback`,
+        redirect_uri: `${window.location.origin}`,
         scope: 'openid profile email'
       }}
-      cacheLocation="localstorage"
-      onRedirectCallback={onRedirectCallback}
-      useRefreshTokens={true}
+      cacheLocation="memory"
+      useRefreshTokens={false}
     >
       <AuthProviderContent>{children}</AuthProviderContent>
     </Auth0Provider>
