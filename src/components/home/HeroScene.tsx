@@ -2,7 +2,6 @@
 
 import { SplineScene } from "../ui/splite";
 import { Card } from "../ui/card"
-import { Spotlight } from "../ui/spotlight"
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { API_ENDPOINTS } from '../../config/api';
