@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { CourseCard } from './CourseCard';
 import { GraduationCap, Users, Trophy, Brain } from 'lucide-react';
 import { API_ENDPOINTS } from '../../config/api';
-import { SplineSceneBasic } from "../../components/ui/code.demo";
 
 // Type for our course data
 interface Course {
