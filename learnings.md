@@ -319,3 +319,25 @@
           // local config
       };
       ``` 
+
+14. API Configuration Lessons
+    - Environment Variables:
+      - Heroku config vars override .env files
+      - Must set vars for both frontend and backend apps
+      - Production builds need explicit environment handling
+    
+    - CORS Configuration:
+      - Must match exact origin domain
+      - Custom domains need separate CORS entries
+      - Development and production domains both needed
+    
+    - API URL Structure:
+      - Consistent prefix (/api) helps with routing clarity
+      - Backend routes should match frontend expectations
+      - Version prefix consideration for future compatibility
+
+    - Common Pitfalls:
+      - Assuming .env files work in production
+      - Missing environment-specific configurations
+      - Incorrect domain assumptions in CORS
+      - Not verifying environment variable injection during build 

@@ -1,37 +1,28 @@
-lockdown-install.js:1 Removing unpermitted intrinsics
-index-86678396.js:208 API_BASE_URL: https://master-the-robots.herokuapp.com
-index-86678396.js:208 VITE_API_URL: https://master-the-robots.herokuapp.com
-index-86678396.js:208 Auth state: {isAuthenticated: false, isLoading: true, user: undefined}
-index-86678396.js:208 Auth0 Configuration: {domain: 'dev-67r8mg5em7mrf1w5.us.auth0.com', clientId: 'hmgeTYAohcjGQfjs8jaiBUn0Nxht6EXm', origin: 'https://mastertherobots.com', env: {…}}
-index-86678396.js:208 Fetching courses from: https://master-the-robots.herokuapp.com/courses
-index-86678396.js:208 Auth state: {isAuthenticated: false, isLoading: false, user: undefined}
-config.js:1 website config {scheme: 'clearly/v22', version: '230223', websites: {…}}
-config.js:1 website export window config
-/#courses:1 Access to fetch at 'https://master-the-robots.herokuapp.com/courses' from origin 'https://mastertherobots.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
-index-86678396.js:208 
+index-a5cb6176.js:208 Fetching courses from: https://master-the-robots-fe5cf20dff5e.herokuapp.com/api/courses
+/#courses:1 Access to fetch at 'https://master-the-robots-fe5cf20dff5e.herokuapp.com/api/courses' from origin 'https://mastertherobots.com' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'https://master-the-robots-frontend-02ff5d69594a.herokuapp.com' that is not equal to the supplied origin. Have the server send the header with a valid value, or, if an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
+index-a5cb6176.js:208 
         
         
-       GET https://master-the-robots.herokuapp.com/courses net::ERR_FAILED 404 (Not Found)
-(anonymous) @ index-86678396.js:208
-Ci @ index-86678396.js:40
-cn @ index-86678396.js:40
-(anonymous) @ index-86678396.js:40
-k @ index-86678396.js:25
-kn @ index-86678396.js:25
-index-86678396.js:208 Error fetching courses: TypeError: Failed to fetch
-    at index-86678396.js:208:30153
-    at Ci (index-86678396.js:40:24178)
-    at cn (index-86678396.js:40:42106)
-    at index-86678396.js:40:40461
-    at k (index-86678396.js:25:1562)
-    at MessagePort.kn (index-86678396.js:25:1930)
+       GET https://master-the-robots-fe5cf20dff5e.herokuapp.com/api/courses net::ERR_FAILED 200 (OK)
+(anonymous) @ index-a5cb6176.js:208
+Pi @ index-a5cb6176.js:40
+dn @ index-a5cb6176.js:40
+Tp @ index-a5cb6176.js:40
+_t @ index-a5cb6176.js:40
+xa @ index-a5cb6176.js:40
+kt @ index-a5cb6176.js:38
+(anonymous) @ index-a5cb6176.js:40
+index-a5cb6176.js:208 Error fetching courses: {message: 'Failed to fetch', error: TypeError: Failed to fetch
+    at https://mastertherobots.com/assets/index-a5cb6176.js:208:30587
+  …, endpoint: 'https://master-the-robots-fe5cf20dff5e.herokuapp.com/api/courses'}
 overrideMethod @ hook.js:608
-(anonymous) @ index-86678396.js:208
+(anonymous) @ index-a5cb6176.js:208
 Promise.catch
-(anonymous) @ index-86678396.js:208
-Ci @ index-86678396.js:40
-cn @ index-86678396.js:40
-(anonymous) @ index-86678396.js:40
-k @ index-86678396.js:25
-kn @ index-86678396.js:25
-web-client-content-script.js:2 Uncaught (in promise) Error: Access to storage is not allowed from this context.
+(anonymous) @ index-a5cb6176.js:208
+Pi @ index-a5cb6176.js:40
+dn @ index-a5cb6176.js:40
+Tp @ index-a5cb6176.js:40
+_t @ index-a5cb6176.js:40
+xa @ index-a5cb6176.js:40
+kt @ index-a5cb6176.js:38
+(anonymous) @ index-a5cb6176.js:40
