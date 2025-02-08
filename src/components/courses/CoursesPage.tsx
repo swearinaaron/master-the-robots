@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { CourseCard } from './CourseCard';
 import { GraduationCap, Users, Trophy, Brain } from 'lucide-react';
 import { API_ENDPOINTS } from '../../config/api';
+import { SplineSceneBasic } from "../../components/ui/code.demo";
 
 // Type for our course data
 interface Course {
@@ -85,14 +86,9 @@ export function CoursesPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-20">
+      <div className="pt-8 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl font-bold mb-4">Master AI with Our Premium Courses</h1>
-            <p className="text-xl text-purple-100 max-w-2xl mx-auto">
-              Transform your career with comprehensive AI training designed for all skill levels
-            </p>
-          </div>
+          <SplineSceneBasic />
         </div>
       </div>
 

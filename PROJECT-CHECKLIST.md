@@ -153,4 +153,17 @@ Requirements:
 - Image path stored in database
 - Only authorized users can edit
 
+### Image Management
+- [x] Set up static file serving
+- [x] Implement image upload
+- [x] Add error handling
+- [x] Auto-refresh after upload
+- [x] Clean up old images
+- [x] Proper URL construction
+
+### Data Refresh
+- [x] Add refresh trigger state
+- [x] Implement callback pattern
+- [x] Auto-refresh on updates
+
 Would you like me to continue with more detailed breakdowns of any specific phase? 

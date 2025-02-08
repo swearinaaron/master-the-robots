@@ -413,3 +413,28 @@
       - Port conflicts: Check if processes already using 3000/5173
       - Database connection: Verify PostgreSQL is running
       - Missing node_modules: Run npm install in both directories 
+
+17. Image Handling Best Practices
+    - Static File Serving:
+      - Express needs explicit static directory setup
+      - Frontend needs full URL with API base
+      - File paths must match database records exactly
+    
+    - Image Upload Flow:
+      1. Frontend sends file to API
+      2. Backend saves to public/img
+      3. Updates database with path
+      4. Frontend constructs full URL using API base
+    
+    - Common Pitfalls:
+      - Missing API base URL in image src
+      - Incorrect file paths in database
+      - Static files not served by Express
+      - Missing file extensions
+    
+    - Best Practices:
+      - Always use API base URL for images
+      - Keep consistent file naming
+      - Add error handling for failed loads
+      - Auto-refresh after upload
+      - Clean up old files when replaced 
