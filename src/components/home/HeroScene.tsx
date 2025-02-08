@@ -9,15 +9,12 @@ import { API_ENDPOINTS } from '../../config/api';
 
 export function HeroScene() {
   return (
-    <Card className="w-full h-[600px] bg-gradient-to-r from-purple-600/90 to-indigo-600/90 relative overflow-hidden border-0">
-      <Spotlight
-        className="-top-40 left-0 md:left-60 md:-top-20"
-        fill="white"
-      />
+    <Card className="w-full h-[600px] relative overflow-hidden border-0">
+      <div className="absolute inset-0 bg-gradient-to-r from-purple-600/90 to-indigo-600/90 -z-10" />
       
-      <div className="flex flex-col md:flex-row min-h-screen">
+      <div className="flex flex-col md:flex-row min-h-screen relative">
         {/* Left content */}
-        <div className="flex-1 flex items-center px-8 sm:px-16 lg:px-24 pt-24 md:pt-0">
+        <div className="flex-1 flex items-center px-8 sm:px-16 lg:px-24 pt-24 md:pt-0 z-20">
           <div className="max-w-xl">
             <h1 className="text-5xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-purple-100">
               Master the Future
@@ -45,10 +42,10 @@ export function HeroScene() {
         </div>
 
         {/* Right content */}
-        <div className="flex-1 relative h-[600px] md:h-auto -mt-24 md:mt-0">
+        <div className="flex-1 relative h-[700px] md:h-auto -mt-24 md:mt-0 z-10">
           <SplineScene 
             scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-            className="w-full h-full"
+            className="w-full h-full scale-110"
           />
         </div>
       </div>
