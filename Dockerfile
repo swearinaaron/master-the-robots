@@ -7,14 +7,20 @@ WORKDIR /usr/src/app
 # Copy package files
 COPY server/package*.json ./
 
+# Copy TypeScript config
+COPY server/tsconfig.json ./
+
 # Install dependencies
 RUN npm install
 
-# Copy server code
-COPY server/ .
+# Copy server source code
+COPY server/src ./src
 
-# Create public/img directory
-RUN mkdir -p public/img
+# Copy public directory if it exists
+COPY server/public ./public
+
+# Build TypeScript
+RUN npm run build
 
 # Expose port
 EXPOSE 3000
