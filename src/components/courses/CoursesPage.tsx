@@ -84,35 +84,10 @@ export function CoursesPage() {
   }, [refreshTrigger]); // Add refreshTrigger to dependencies
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <div className="pt-8 pb-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SplineSceneBasic />
-        </div>
-      </div>
-
-      {/* Features Section */}
-      <div className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, index) => (
-              <div key={index} className="text-center">
-                <div className="flex justify-center">
-                  <feature.icon className="h-12 w-12 text-purple-600" />
-                </div>
-                <h3 className="mt-4 text-lg font-semibold text-gray-900">{feature.title}</h3>
-                <p className="mt-2 text-gray-600">{feature.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Courses Grid */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <h2 className="text-3xl font-bold text-gray-900 mb-8">Available Courses</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+    <div className="min-h-screen bg-gray-900 pt-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <h1 className="text-4xl font-bold text-white mb-8">Available Courses</h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {courses.map((course) => (
             <CourseCard 
               key={course.id}
@@ -128,22 +103,6 @@ export function CoursesPage() {
               onImageUpdate={refreshCourses}
             />
           ))}
-        </div>
-      </div>
-
-      {/* CTA Section */}
-      <div className="bg-purple-600 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Start Your AI Journey?</h2>
-          <p className="text-xl text-purple-100 mb-8">
-            Join thousands of students who are already mastering AI with our courses
-          </p>
-          <a
-            href="#browse-courses"
-            className="inline-block bg-white text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-purple-50 transition-colors"
-          >
-            Browse All Courses
-          </a>
         </div>
       </div>
     </div>

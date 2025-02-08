@@ -14,7 +14,7 @@ export function SocialLinks() {
   return (
     <div className="bg-gray-900 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-center space-x-6">
+        <div className="flex space-x-6 text-[#34cddc]">
           {socialLinks.map((social) => (
             <a
               key={social.name}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Header } from './components/layout/Header';
 import { Features } from './components/home/Features';
 import { SocialLinks } from './components/social/SocialLinks';
@@ -14,6 +14,8 @@ import { ProtectedRoute } from './components/auth/ProtectedRoute';
 import { DeveloperModeProvider } from './context/DeveloperMode';
 import { AuthProvider } from './context/AuthContext';
 import { HeroScene } from './components/home/HeroScene';
+import { VideoIntro } from './components/home/VideoIntro';
+import { SignupSection } from './components/home/SignupSection';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -30,21 +32,23 @@ function App() {
         <AuthProvider>
           <div className="min-h-screen bg-gray-900">
             <Header />
-            {currentPage === 'home' && (
-              <>
-                <HeroScene />
-                <div className="py-16">
-                  <Features />
-                </div>
-              </>
-            )}
-            {currentPage === 'courses' && <CoursesPage />}
-            {currentPage === 'profile' && <ProfilePage />}
-            {currentPage === 'podcast' && <PodcastPage />}
-            {currentPage === 'blog' && <BlogPage />}
-            {currentPage === 'resources' && <ResourcesPage />}
-            {currentPage === 'about' && <AboutPage />}
-            {currentPage === 'contact' && <ContactPage />}
+            <Routes>
+              <Route path="/" element={
+                <>
+                  <HeroScene />
+                  <VideoIntro />
+                  <SignupSection />
+                  <div className="py-16">
+                    <Features />
+                  </div>
+                </>
+              } />
+              <Route path="/courses" element={<CoursesPage />} />
+              <Route path="/podcast" element={<PodcastPage />} />
+              <Route path="/blog" element={<BlogPage />} />
+              <Route path="/resources" element={<ResourcesPage />} />
+              <Route path="/about" element={<AboutPage />} />
+            </Routes>
             <SocialLinks />
           </div>
         </AuthProvider>

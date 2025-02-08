@@ -171,7 +171,7 @@ export function CourseCard({
             className="inline-flex items-center px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
           >
             Enroll Now
-            <ArrowRight className="ml-2 w-4 h-4" />
+            <ArrowRight className="ml-2 w-5 h-5 text-[#34cddc]" />
           </a>
         </div>
       </div>

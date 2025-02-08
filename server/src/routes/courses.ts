@@ -114,57 +114,22 @@ router.patch('/:id', async (req, res) => {
 
 // Update course image
 router.post('/:id/image', upload.single('image'), async (req, res) => {
-    console.log('=== POST /api/courses/:id/image START ===');
-    console.log('Course ID:', req.params.id);
-    console.log('File details:', req.file);
-    
     try {
-        const courseId = parseInt(req.params.id);
-        if (isNaN(courseId)) {
-            throw new Error('Invalid course ID');
+        const { id } = req.params;
+        const file = req.file;
+
+        if (!file) {
+            return res.status(400).json({ message: 'No file uploaded' });
         }
 
-        const course = await courseRepository.findOneBy({ id: courseId });
-        if (!course) {
-            throw new Error('Course not found');
-        }
+        // Save file path to database
+        const imagePath = `/img/${file.filename}`;
+        await courseRepository.update(id, { image_url: imagePath });
 
-        if (!req.file) {
-            throw new Error('No file uploaded');
-        }
-
-        // If course already has an image, delete the old one
-        if (course.image_url) {
-            const oldImagePath = path.join(uploadDir, path.basename(course.image_url));
-            if (fs.existsSync(oldImagePath)) {
-                console.log('Deleting old image:', oldImagePath);
-                fs.unlinkSync(oldImagePath);
-            }
-        }
-
-        // Update course with new image URL
-        course.image_url = `/img/${req.file.filename}`;
-        await courseRepository.save(course);
-        
-        console.log('Course updated successfully:', course);
-        res.json(course);
-    } catch (error: any) {
-        console.error('=== POST /api/courses/:id/image ERROR ===', {
-            name: error.name,
-            message: error.message,
-            stack: error.stack
-        });
-        
-        // Clean up uploaded file if database update fails
-        if (req.file) {
-            console.log('Cleaning up uploaded file:', req.file.path);
-            fs.unlinkSync(req.file.path);
-        }
-        
-        res.status(500).json({ 
-            message: error.message || 'Error updating course image',
-            error: error.name
-        });
+        res.json({ message: 'Image uploaded successfully', path: imagePath });
+    } catch (error) {
+        console.error('Error uploading image:', error);
+        res.status(500).json({ message: 'Error uploading image' });
     }
 });
 
