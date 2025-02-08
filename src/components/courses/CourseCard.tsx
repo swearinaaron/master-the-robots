@@ -93,7 +93,7 @@ export function CourseCard({
 
       const imgElement = document.querySelector(`#course-image-${id}`) as HTMLImageElement;
       if (imgElement) {
-        imgElement.src = `${imgElement.src}?t=${Date.now()}`;
+        imgElement.src = `${API_ENDPOINTS.base}${imageUrl}?t=${Date.now()}`;
       }
 
       onImageUpdate?.();
@@ -128,7 +128,7 @@ export function CourseCard({
         )}
         <img
           id={`course-image-${id}`}
-          src={imageUrl ? `${API_ENDPOINTS.base}${imageUrl}` : ''}
+          src={`${API_ENDPOINTS.base}${imageUrl}`}
           alt={title}
           onError={(e) => {
             const img = e.target as HTMLImageElement;

@@ -10,8 +10,8 @@ COPY server/package*.json ./
 # Copy TypeScript config
 COPY server/tsconfig.json ./
 
-# Install dependencies
-RUN npm install
+# Install dependencies (remove build from postinstall)
+RUN npm install --ignore-scripts
 
 # Copy server source code
 COPY server/src ./src
@@ -19,7 +19,7 @@ COPY server/src ./src
 # Copy public directory if it exists
 COPY server/public ./public
 
-# Build TypeScript
+# Now build after source files are copied
 RUN npm run build
 
 # Expose port
