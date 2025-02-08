@@ -26,8 +26,16 @@ exports.AppDataSource = new typeorm_1.DataSource({
 // Initialize database connection
 const connectDatabase = async () => {
     try {
+        console.log('Attempting database connection with config:', {
+            host: process.env.DATABASE_URL ? 'Using URL' : process.env.DB_HOST,
+            database: process.env.DATABASE_URL ? 'Using URL' : process.env.DB_NAME,
+            port: process.env.DATABASE_URL ? 'Using URL' : process.env.DB_PORT
+        });
         await exports.AppDataSource.initialize();
         console.log("Database connected successfully");
+        // Test the connection
+        const testQuery = await exports.AppDataSource.query('SELECT NOW()');
+        console.log("Database test query result:", testQuery);
     }
     catch (error) {
         console.error("Error connecting to database:", error);

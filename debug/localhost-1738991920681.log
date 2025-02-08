@@ -1,0 +1,82 @@
+lockdown-install.js:1 Removing unpermitted intrinsics
+client.ts:19 [vite] connecting...
+client.ts:155 [vite] connected.
+api.ts:5 API Configuration Details: {NODE_ENV: 'development', VITE_API_URL: 'http://localhost:3000', API_BASE_URL: 'http://localhost:3000', import_meta_env: {…}}
+api.ts:12 Course API URL: http://localhost:3000/api/courses
+api.ts:23 Final API Endpoints: {courses: 'http://localhost:3000/api/courses', podcasts: 'http://localhost:3000/api/podcasts', resources: 'http://localhost:3000/api/resources', profiles: 'http://localhost:3000/api/profiles'}
+AuthContext.tsx:85 Auth state: {isAuthenticated: false, isLoading: true, user: undefined}
+AuthContext.tsx:24 Auth0 Configuration: {domain: 'dev-67r8mg5em7mrf1w5.us.auth0.com', clientId: 'hmgeTYAohcjGQfjs8jaiBUn0Nxht6EXm', origin: 'http://localhost:5173', env: {…}}
+AuthContext.tsx:85 Auth state: {isAuthenticated: false, isLoading: true, user: undefined}
+AuthContext.tsx:24 Auth0 Configuration: {domain: 'dev-67r8mg5em7mrf1w5.us.auth0.com', clientId: 'hmgeTYAohcjGQfjs8jaiBUn0Nxht6EXm', origin: 'http://localhost:5173', env: {…}}
+CoursesPage.tsx:47 Fetching courses from: http://localhost:3000/api/courses
+CoursesPage.tsx:47 Fetching courses from: http://localhost:3000/api/courses
+AuthContext.tsx:85 Auth state: {isAuthenticated: false, isLoading: false, user: undefined}
+config.js:1 website config {scheme: 'clearly/v22', version: '230223', websites: {…}}
+config.js:1 website export window config
+CoursesPage.tsx:50 
+        
+        
+       GET http://localhost:3000/api/courses 500 (Internal Server Error)
+(anonymous) @ CoursesPage.tsx:50
+commitHookEffectListMount @ chunk-MOBLD27N.js?v=a17ba7eb:16934
+commitPassiveMountOnFiber @ chunk-MOBLD27N.js?v=a17ba7eb:18182
+commitPassiveMountEffects_complete @ chunk-MOBLD27N.js?v=a17ba7eb:18155
+commitPassiveMountEffects_begin @ chunk-MOBLD27N.js?v=a17ba7eb:18145
+commitPassiveMountEffects @ chunk-MOBLD27N.js?v=a17ba7eb:18135
+flushPassiveEffectsImpl @ chunk-MOBLD27N.js?v=a17ba7eb:19516
+flushPassiveEffects @ chunk-MOBLD27N.js?v=a17ba7eb:19473
+(anonymous) @ chunk-MOBLD27N.js?v=a17ba7eb:19354
+workLoop @ chunk-MOBLD27N.js?v=a17ba7eb:195
+flushWork @ chunk-MOBLD27N.js?v=a17ba7eb:174
+performWorkUntilDeadline @ chunk-MOBLD27N.js?v=a17ba7eb:382
+CoursesPage.tsx:56 Response: {status: 500, statusText: 'Internal Server Error', headers: {…}}
+CoursesPage.tsx:71 Error fetching courses: {message: 'HTTP error! status: 500', error: Error: HTTP error! status: 500
+    at http://localhost:5173/src/components/courses/CoursesPage.tsx:…, endpoint: 'http://localhost:3000/api/courses'}
+overrideMethod @ hook.js:608
+(anonymous) @ CoursesPage.tsx:71
+Promise.catch
+(anonymous) @ CoursesPage.tsx:70
+commitHookEffectListMount @ chunk-MOBLD27N.js?v=a17ba7eb:16934
+commitPassiveMountOnFiber @ chunk-MOBLD27N.js?v=a17ba7eb:18182
+commitPassiveMountEffects_complete @ chunk-MOBLD27N.js?v=a17ba7eb:18155
+commitPassiveMountEffects_begin @ chunk-MOBLD27N.js?v=a17ba7eb:18145
+commitPassiveMountEffects @ chunk-MOBLD27N.js?v=a17ba7eb:18135
+flushPassiveEffectsImpl @ chunk-MOBLD27N.js?v=a17ba7eb:19516
+flushPassiveEffects @ chunk-MOBLD27N.js?v=a17ba7eb:19473
+(anonymous) @ chunk-MOBLD27N.js?v=a17ba7eb:19354
+workLoop @ chunk-MOBLD27N.js?v=a17ba7eb:195
+flushWork @ chunk-MOBLD27N.js?v=a17ba7eb:174
+performWorkUntilDeadline @ chunk-MOBLD27N.js?v=a17ba7eb:382
+CoursesPage.tsx:50 
+        
+        
+       GET http://localhost:3000/api/courses 500 (Internal Server Error)
+(anonymous) @ CoursesPage.tsx:50
+commitHookEffectListMount @ chunk-MOBLD27N.js?v=a17ba7eb:16934
+invokePassiveEffectMountInDEV @ chunk-MOBLD27N.js?v=a17ba7eb:18350
+invokeEffectsInDev @ chunk-MOBLD27N.js?v=a17ba7eb:19727
+commitDoubleInvokeEffectsInDEV @ chunk-MOBLD27N.js?v=a17ba7eb:19712
+flushPassiveEffectsImpl @ chunk-MOBLD27N.js?v=a17ba7eb:19529
+flushPassiveEffects @ chunk-MOBLD27N.js?v=a17ba7eb:19473
+(anonymous) @ chunk-MOBLD27N.js?v=a17ba7eb:19354
+workLoop @ chunk-MOBLD27N.js?v=a17ba7eb:195
+flushWork @ chunk-MOBLD27N.js?v=a17ba7eb:174
+performWorkUntilDeadline @ chunk-MOBLD27N.js?v=a17ba7eb:382
+CoursesPage.tsx:56 Response: {status: 500, statusText: 'Internal Server Error', headers: {…}}
+CoursesPage.tsx:71 Error fetching courses: {message: 'HTTP error! status: 500', error: Error: HTTP error! status: 500
+    at http://localhost:5173/src/components/courses/CoursesPage.tsx:…, endpoint: 'http://localhost:3000/api/courses'}
+overrideMethod @ hook.js:608
+(anonymous) @ CoursesPage.tsx:71
+Promise.catch
+(anonymous) @ CoursesPage.tsx:70
+commitHookEffectListMount @ chunk-MOBLD27N.js?v=a17ba7eb:16934
+invokePassiveEffectMountInDEV @ chunk-MOBLD27N.js?v=a17ba7eb:18350
+invokeEffectsInDev @ chunk-MOBLD27N.js?v=a17ba7eb:19727
+commitDoubleInvokeEffectsInDEV @ chunk-MOBLD27N.js?v=a17ba7eb:19712
+flushPassiveEffectsImpl @ chunk-MOBLD27N.js?v=a17ba7eb:19529
+flushPassiveEffects @ chunk-MOBLD27N.js?v=a17ba7eb:19473
+(anonymous) @ chunk-MOBLD27N.js?v=a17ba7eb:19354
+workLoop @ chunk-MOBLD27N.js?v=a17ba7eb:195
+flushWork @ chunk-MOBLD27N.js?v=a17ba7eb:174
+performWorkUntilDeadline @ chunk-MOBLD27N.js?v=a17ba7eb:382
+web-client-content-script.js:2 Uncaught (in promise) Error: Access to storage is not allowed from this context.

@@ -23,8 +23,18 @@ export const AppDataSource = new DataSource({
 // Initialize database connection
 export const connectDatabase = async () => {
     try {
+        console.log('Attempting database connection with config:', {
+            host: process.env.DATABASE_URL ? 'Using URL' : process.env.DB_HOST,
+            database: process.env.DATABASE_URL ? 'Using URL' : process.env.DB_NAME,
+            port: process.env.DATABASE_URL ? 'Using URL' : process.env.DB_PORT
+        });
+        
         await AppDataSource.initialize();
         console.log("Database connected successfully");
+        
+        // Test the connection
+        const testQuery = await AppDataSource.query('SELECT NOW()');
+        console.log("Database test query result:", testQuery);
     } catch (error) {
         console.error("Error connecting to database:", error);
         throw error;

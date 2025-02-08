@@ -341,3 +341,75 @@
       - Missing environment-specific configurations
       - Incorrect domain assumptions in CORS
       - Not verifying environment variable injection during build 
+
+15. Server Debugging Best Practices
+    - Root Cause: Mixing Docker and local development caused confusion about where logs were appearing
+    - Solution: Always follow this debugging order:
+      1. Stop ALL Docker containers first
+      2. Start server locally with `npm run dev`
+      3. Test in new PowerShell window
+      4. Only move to Docker after local setup works
+
+    - Key Learnings:
+      - Don't assume server errors are database issues
+      - Check for running Docker containers that might conflict
+      - Verify which process is actually serving requests
+      - Running locally shows all console.log output
+      - Docker logs need separate checking
+
+    - Debugging Steps:
+      1. Stop all containers: `docker stop $(docker ps -q)`
+      2. Clear terminal
+      3. Start fresh: `cd server && npm run dev`
+      4. Test in new window: `Invoke-WebRequest http://localhost:3000/health`
+      5. Check server logs in original window
+
+    - Common Pitfalls:
+      - Multiple servers running (Docker + local)
+      - Logs appearing in wrong place
+      - Assuming Docker when running locally
+      - Not checking process ownership of port 3000 
+
+16. Application Startup Sequence
+    - Required Order:
+      1. Stop any running processes:
+         ```powershell
+         docker stop $(docker ps -q)  # Stop all Docker containers
+         ```
+      
+      2. Start backend (in server directory):
+         ```powershell
+         cd server
+         npm run dev
+         ```
+         Expected logs:
+         - Database connection successful
+         - Server running on port 3000
+         - Environment: development
+      
+      3. Start frontend (in new terminal, from root):
+         ```powershell
+         cd ..  # If in server directory
+         npm run dev
+         ```
+         Expected logs:
+         - Vite server starting
+         - Local URL: http://localhost:5173
+      
+    - Verification Steps:
+      1. Backend health check:
+         ```powershell
+         Invoke-WebRequest http://localhost:3000/health | Select-Object -ExpandProperty Content
+         ```
+         Should return: {"status":"healthy"}
+      
+      2. Courses endpoint:
+         ```powershell
+         Invoke-WebRequest http://localhost:3000/api/courses | Select-Object -ExpandProperty Content
+         ```
+         Should return: Array of courses
+
+    - Common Startup Issues:
+      - Port conflicts: Check if processes already using 3000/5173
+      - Database connection: Verify PostgreSQL is running
+      - Missing node_modules: Run npm install in both directories 

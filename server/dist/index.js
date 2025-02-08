@@ -7,11 +7,11 @@ const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const pg_1 = require("pg");
+const app_1 = __importDefault(require("./app"));
+const database_1 = require("./config/database");
 // Load environment variables
 dotenv_1.default.config();
 // Initialize express app
-const app = (0, express_1.default)();
-// Parse PORT from environment variable
 const PORT = parseInt(process.env.PORT || '3000', 10);
 // Database connection
 const pool = new pg_1.Pool(process.env.DATABASE_URL
@@ -24,18 +24,23 @@ const pool = new pg_1.Pool(process.env.DATABASE_URL
         port: parseInt(process.env.DB_PORT || '5432'),
     });
 // Middleware
-app.use((0, cors_1.default)({
+app_1.default.use((0, cors_1.default)({
     origin: process.env.CORS_ORIGIN || 'http://localhost:5173',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     credentials: true
 }));
-app.use(express_1.default.json());
+app_1.default.use(express_1.default.json());
+// Add request logging middleware
+app_1.default.use((req, res, next) => {
+    console.log(`${new Date().toISOString()} - ${req.method} ${req.url}`);
+    next();
+});
 // Health check route
-app.get('/health', (req, res) => {
+app_1.default.get('/health', (req, res) => {
     res.json({ status: 'healthy' });
 });
 // Courses routes
-app.get('/api/courses', async (req, res) => {
+app_1.default.get('/api/courses', async (req, res) => {
     try {
         const result = await pool.query('SELECT * FROM courses');
         res.json(result.rows);
@@ -45,7 +50,7 @@ app.get('/api/courses', async (req, res) => {
     }
 });
 // Podcasts routes
-app.get('/api/podcasts', async (req, res) => {
+app_1.default.get('/api/podcasts', async (req, res) => {
     try {
         const result = await pool.query('SELECT * FROM podcasts');
         res.json(result.rows);
@@ -55,7 +60,7 @@ app.get('/api/podcasts', async (req, res) => {
     }
 });
 // Resources routes
-app.get('/api/resources', async (req, res) => {
+app_1.default.get('/api/resources', async (req, res) => {
     try {
         const result = await pool.query('SELECT * FROM resources');
         res.json(result.rows);
@@ -65,7 +70,7 @@ app.get('/api/resources', async (req, res) => {
     }
 });
 // Profile routes
-app.get('/api/profile/:userId', async (req, res) => {
+app_1.default.get('/api/profile/:userId', async (req, res) => {
     try {
         const { userId } = req.params;
         const result = await pool.query('SELECT * FROM profiles WHERE user_id = $1', [userId]);
@@ -78,12 +83,18 @@ app.get('/api/profile/:userId', async (req, res) => {
         res.status(500).json({ error: 'Failed to fetch profile' });
     }
 });
-// Start server
-app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Server running on port ${PORT}`);
-    console.log(`Frontend URL: ${process.env.CORS_ORIGIN || 'http://localhost:5173'}`);
-    console.log('Database URL:', process.env.DATABASE_URL ? 'Set' : 'Not set');
-    console.log('Environment:', process.env.NODE_ENV);
+(0, database_1.connectDatabase)()
+    .then(() => {
+    app_1.default.listen(PORT, '0.0.0.0', () => {
+        console.log(`Server running on port ${PORT}`);
+        console.log(`Frontend URL: ${process.env.CORS_ORIGIN || 'http://localhost:5173'}`);
+        console.log(`Database URL: ${process.env.DATABASE_URL ? 'Set' : 'Not set'}`);
+        console.log(`Environment: ${process.env.NODE_ENV}`);
+    });
+})
+    .catch((error) => {
+    console.error('Failed to start server:', error);
+    process.exit(1);
 });
 // Global error handling
 process.on('uncaughtException', (error) => {

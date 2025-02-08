@@ -18,21 +18,41 @@ __decorate([
     __metadata("design:type", Number)
 ], Course.prototype, "id", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    (0, typeorm_1.Column)({ type: 'varchar' }),
     __metadata("design:type", String)
 ], Course.prototype, "title", void 0);
 __decorate([
-    (0, typeorm_1.Column)("text"),
+    (0, typeorm_1.Column)({ type: 'text' }),
     __metadata("design:type", String)
 ], Course.prototype, "description", void 0);
 __decorate([
-    (0, typeorm_1.Column)("text", { nullable: true }),
+    (0, typeorm_1.Column)({ name: 'image_url', type: 'varchar', nullable: true }),
     __metadata("design:type", String)
 ], Course.prototype, "image_url", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    (0, typeorm_1.Column)({ name: 'difficulty_level', type: 'varchar' }),
     __metadata("design:type", String)
 ], Course.prototype, "difficulty_level", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: 'varchar' }),
+    __metadata("design:type", String)
+], Course.prototype, "price", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: 'float' }),
+    __metadata("design:type", Number)
+], Course.prototype, "rating", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'students_count', type: 'integer', default: 0 }),
+    __metadata("design:type", Number)
+], Course.prototype, "students_count", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'udemy_url', type: 'varchar' }),
+    __metadata("design:type", String)
+], Course.prototype, "udemy_url", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'created_at', type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' }),
+    __metadata("design:type", Date)
+], Course.prototype, "created_at", void 0);
 Course = __decorate([
     (0, typeorm_1.Entity)("courses")
 ], Course);

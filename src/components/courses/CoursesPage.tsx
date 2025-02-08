@@ -42,6 +42,12 @@ const features = [
 
 export function CoursesPage() {
   const [courses, setCourses] = useState<Course[]>([]);
+  const [refreshTrigger, setRefreshTrigger] = useState(0);
+
+  // Add refresh function
+  const refreshCourses = () => {
+    setRefreshTrigger(prev => prev + 1);
+  };
 
   useEffect(() => {
     console.log('Fetching courses from:', API_ENDPOINTS.courses);
@@ -74,7 +80,7 @@ export function CoursesPage() {
           endpoint: API_ENDPOINTS.courses
         });
       });
-  }, []);
+  }, [refreshTrigger]); // Add refreshTrigger to dependencies
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -114,6 +120,7 @@ export function CoursesPage() {
           {courses.map((course) => (
             <CourseCard 
               key={course.id}
+              id={course.id}
               title={course.title}
               description={course.description}
               imageUrl={course.image_url}
@@ -122,6 +129,7 @@ export function CoursesPage() {
               rating={parseFloat(course.rating)}
               studentsCount={course.students_count}
               udemy_url={course.udemy_url}
+              onImageUpdate={refreshCourses}
             />
           ))}
         </div>

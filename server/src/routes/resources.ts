@@ -1,8 +1,9 @@
 import { Router } from 'express';
 import { AppDataSource } from '../config/database';
 import { Resource } from '../entities/Resource';
+import express from 'express';
 
-const router = Router();
+const router = express.Router();
 
 // GET /api/resources
 router.get('/', async (req, res) => {
@@ -20,4 +21,4 @@ router.get('/', async (req, res) => {
     }
 });
 
-export default router; 
+export { router as resourcesRouter }; 

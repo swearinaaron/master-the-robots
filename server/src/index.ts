@@ -2,14 +2,13 @@ import express, { Request, Response } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { Pool } from 'pg';
+import app from './app';
+import { connectDatabase } from './config/database';
 
 // Load environment variables
 dotenv.config();
 
 // Initialize express app
-const app = express();
-
-// Parse PORT from environment variable
 const PORT = parseInt(process.env.PORT || '3000', 10);
 
 // Database connection
@@ -32,6 +31,12 @@ app.use(cors({
   credentials: true
 }));
 app.use(express.json());
+
+// Add request logging middleware
+app.use((req, res, next) => {
+    console.log(`${new Date().toISOString()} - ${req.method} ${req.url}`);
+    next();
+});
 
 // Health check route
 app.get('/health', (req: Request, res: Response) => {
@@ -82,13 +87,19 @@ app.get('/api/profile/:userId', async (req: Request, res: Response) => {
   }
 });
 
-// Start server
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Server running on port ${PORT}`);
-  console.log(`Frontend URL: ${process.env.CORS_ORIGIN || 'http://localhost:5173'}`);
-  console.log('Database URL:', process.env.DATABASE_URL ? 'Set' : 'Not set');
-  console.log('Environment:', process.env.NODE_ENV);
-});
+connectDatabase()
+    .then(() => {
+        app.listen(PORT, '0.0.0.0', () => {
+            console.log(`Server running on port ${PORT}`);
+            console.log(`Frontend URL: ${process.env.CORS_ORIGIN || 'http://localhost:5173'}`);
+            console.log(`Database URL: ${process.env.DATABASE_URL ? 'Set' : 'Not set'}`);
+            console.log(`Environment: ${process.env.NODE_ENV}`);
+        });
+    })
+    .catch((error) => {
+        console.error('Failed to start server:', error);
+        process.exit(1);
+    });
 
 // Global error handling
 process.on('uncaughtException', (error) => {

@@ -27,4 +27,4 @@ router.get('/:userId', async (req, res) => {
     }
 });
 
-export default router; 
+export { router as profilesRouter }; 

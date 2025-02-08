@@ -5,15 +5,30 @@ export class Course {
     @PrimaryGeneratedColumn()
     id!: number;
 
-    @Column()
+    @Column({ type: 'varchar' })
     title!: string;
 
-    @Column("text")
+    @Column({ type: 'text' })
     description!: string;
 
-    @Column("text", { nullable: true })
-    image_url!: string;
+    @Column({ name: 'image_url', type: 'varchar', nullable: true })
+    image_url!: string | null;
 
-    @Column()
+    @Column({ name: 'difficulty_level', type: 'varchar' })
     difficulty_level!: string;
+
+    @Column({ type: 'varchar' })
+    price!: string;
+
+    @Column({ type: 'float' })
+    rating!: number;
+
+    @Column({ name: 'students_count', type: 'integer', default: 0 })
+    students_count!: number;
+
+    @Column({ name: 'udemy_url', type: 'varchar' })
+    udemy_url!: string;
+
+    @Column({ name: 'created_at', type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+    created_at!: Date;
 } 
