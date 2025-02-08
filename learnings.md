@@ -438,3 +438,25 @@
       - Add error handling for failed loads
       - Auto-refresh after upload
       - Clean up old files when replaced 
+
+## Image Handling
+
+All static images are served through the backend server:
+
+### Directory Structure
+- All images live in `server/public/img/`
+- Express serves them via `/img` route
+
+### URL Patterns
+- Local Development: `http://localhost:3000/img/filename.png`
+- Production: `https://master-the-robots-fe5cf20dff5e.herokuapp.com/img/filename.png`
+
+### Implementation
+- Frontend uses `${API_ENDPOINTS.base}/img/` for all image URLs
+- Image uploads should be directed to `server/public/img/`
+- Express serves static files: `app.use('/img', express.static(path.join(__dirname, 'public/img')))`
+
+### Benefits
+- Consistent behavior across environments
+- Single source of truth for images
+- Simplified maintenance and debugging 
