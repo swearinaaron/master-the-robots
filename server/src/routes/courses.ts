@@ -22,10 +22,8 @@ const storage = multer.diskStorage({
         cb(null, uploadDir);
     },
     filename: (req, file, cb) => {
-        // Generate unique filename using timestamp and original extension
-        const uniqueSuffix = `${Date.now()}-${Math.round(Math.random() * 1E9)}`;
-        const ext = path.extname(file.originalname);
-        cb(null, `course-${uniqueSuffix}${ext}`);
+        // Use the original filename
+        cb(null, file.originalname);
     }
 });
 
@@ -122,14 +120,37 @@ router.post('/:id/image', upload.single('image'), async (req, res) => {
             return res.status(400).json({ message: 'No file uploaded' });
         }
 
-        // Save file path to database
-        const imagePath = `/img/${file.filename}`;
+        // Save the original filename to the database
+        const imagePath = `/img/${file.originalname}`;
         await courseRepository.update(id, { image_url: imagePath });
 
         res.json({ message: 'Image uploaded successfully', path: imagePath });
     } catch (error) {
         console.error('Error uploading image:', error);
         res.status(500).json({ message: 'Error uploading image' });
+    }
+});
+
+// Delete a course by ID
+router.delete('/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        console.log(`Received DELETE request for course ID: ${id}`);
+
+        const course = await courseRepository.findOneBy({ id: parseInt(id) });
+        console.log('Course found:', course);
+
+        if (!course) {
+            console.log('Course not found, returning 404');
+            return res.status(404).json({ message: 'Course not found' });
+        }
+
+        await courseRepository.remove(course);
+        console.log('Course deleted:', course);
+        res.json({ message: 'Course deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting course:', error);
+        res.status(500).json({ message: 'Error deleting course' });
     }
 });
 

@@ -11,6 +11,6 @@ export class Podcast {
     @Column("text")
     description!: string;
 
-    @Column("text")
-    url!: string;
+    @Column({ type: 'text', nullable: true })
+    url!: string | null;
 } 

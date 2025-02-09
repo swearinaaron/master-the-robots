@@ -25,11 +25,6 @@ const pool = new Pool(
 );
 
 // Middleware
-app.use(cors({
-  origin: process.env.CORS_ORIGIN || 'http://localhost:5173',
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  credentials: true
-}));
 app.use(express.json());
 
 // Add request logging middleware
@@ -91,7 +86,7 @@ connectDatabase()
     .then(() => {
         app.listen(PORT, '0.0.0.0', () => {
             console.log(`Server running on port ${PORT}`);
-            console.log(`Frontend URL: ${process.env.CORS_ORIGIN || 'http://localhost:5173'}`);
+            console.log(`Frontend URL: ${process.env.CORS_ORIGIN || 'http://localhost:8080'}`);
             console.log(`Database URL: ${process.env.DATABASE_URL ? 'Set' : 'Not set'}`);
             console.log(`Environment: ${process.env.NODE_ENV}`);
         });

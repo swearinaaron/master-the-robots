@@ -11,8 +11,8 @@ export class Resource {
     @Column("text")
     description!: string;
 
-    @Column("text")
-    url!: string;
+    @Column("text", { nullable: true })
+    url!: string | null;
 
     @Column()
     type!: string;

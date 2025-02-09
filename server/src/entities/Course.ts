@@ -20,7 +20,7 @@ export class Course {
     @Column({ type: 'varchar' })
     price!: string;
 
-    @Column({ type: 'float' })
+    @Column({ type: 'float', nullable: true, default: 0 })
     rating!: number;
 
     @Column({ name: 'students_count', type: 'integer', default: 0 })

@@ -10,10 +10,12 @@ const app = express();
 
 // CORS configuration
 app.use(cors({
-    origin: process.env.CORS_ORIGIN || 'https://mastertherobots.com',
+    origin: true, // Allow all origins in development
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true
+    allowedHeaders: ['Content-Type', 'Authorization', 'Origin', 'Accept', 'X-Requested-With'],
+    exposedHeaders: ['Content-Range', 'X-Content-Range'],
+    credentials: true,
+    maxAge: 86400 // Cache preflight requests for 24 hours
 }));
 
 // Middleware
