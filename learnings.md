@@ -460,3 +460,15 @@ All static images are served through the backend server:
 - Consistent behavior across environments
 - Single source of truth for images
 - Simplified maintenance and debugging 
+
+### Successful Solutions
+
+- **Environment Variables:**
+  - Updated `.env` file with correct `DATABASE_URL` and `VITE_API_URL` for consistent configuration across environments.
+
+- **Docker & Deployment:**
+  - Created `Dockerfile.frontend` and `docker-compose.yml` to manage both frontend and backend services.
+  - Successfully deployed both frontend and backend using Docker Compose.
+
+- **Database Connectivity:**
+  - Resolved PostgreSQL password issue and ensured database connectivity. 

@@ -1,29 +1,23 @@
-// API base URL - use environment variable for flexibility
-const isDev = import.meta.env.MODE === 'development';
-const API_BASE_URL = isDev 
-  ? 'http://localhost:3000'
-  : 'https://master-the-robots-fe5cf20dff5e.herokuapp.com';
+interface ImportMetaEnv {
+  MODE: string;
+  VITE_API_URL: string;
+}
 
-// Debug environment variables and API URL usage
-console.log('API Configuration Details:', {
-    NODE_ENV: import.meta.env.MODE,
-    VITE_API_URL: import.meta.env.VITE_API_URL,
-    API_BASE_URL,
-    import_meta_env: import.meta.env,
-});
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}
 
-console.log('Course API URL:', `${API_BASE_URL}/api/courses`);
-
-// API endpoints
+// API endpoints - use relative URLs to avoid CORS and connection issues
 export const API_ENDPOINTS = {
-    base: isDev 
-        ? 'http://localhost:3000'
-        : 'https://master-the-robots-fe5cf20dff5e.herokuapp.com',
-    courses: `${API_BASE_URL}/api/courses`,
-    podcasts: `${API_BASE_URL}/api/podcasts`,
-    resources: `${API_BASE_URL}/api/resources`,
-    profiles: `${API_BASE_URL}/api/profiles`,
+    base: '',
+    courses: '/api/courses',
+    podcasts: '/api/podcasts',
+    resources: '/api/resources',
+    profiles: '/api/profiles',
 };
 
 // Log final endpoints
-console.log('Final API Endpoints:', API_ENDPOINTS);
+console.log('API Configuration:', {
+    endpoints: API_ENDPOINTS,
+    mode: import.meta.env.MODE
+});

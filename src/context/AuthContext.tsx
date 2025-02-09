@@ -15,6 +15,15 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
+interface ImportMetaEnv {
+  VITE_AUTH0_DOMAIN: string;
+  VITE_AUTH0_CLIENT_ID: string;
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}
+
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [error, setError] = React.useState<string | null>(null);
   const domain = import.meta.env.VITE_AUTH0_DOMAIN;
@@ -51,14 +60,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   return (
     <Auth0Provider
-      domain={domain}
-      clientId={clientId}
+      domain={import.meta.env.VITE_AUTH0_DOMAIN}
+      clientId={import.meta.env.VITE_AUTH0_CLIENT_ID}
       authorizationParams={{
-        redirect_uri: `${window.location.origin}`,
-        scope: 'openid profile email'
+        redirect_uri: window.location.origin,
       }}
-      cacheLocation="memory"
-      useRefreshTokens={false}
+      cacheLocation="localstorage"
+      useRefreshTokens={true}
+      onRedirectCallback={onRedirectCallback}
     >
       <AuthProviderContent>{children}</AuthProviderContent>
     </Auth0Provider>

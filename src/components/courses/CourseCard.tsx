@@ -32,6 +32,8 @@ export function CourseCard({
   const { isAuthenticated } = useAuth();
   const [isUploading, setIsUploading] = useState(false);
   const [uploadError, setUploadError] = useState<string | null>(null);
+  const [localTitle, setLocalTitle] = useState(title);
+  const [localDescription, setLocalDescription] = useState(description);
 
   const handleSaveText = async (field: string, value: string) => {
     try {
@@ -43,7 +45,29 @@ export function CourseCard({
         body: JSON.stringify({ [field]: value }),
       });
 
-      if (!response.ok) throw new Error('Failed to update course');
+      console.log('Sending PATCH request to:', `${API_ENDPOINTS.courses}/${id}`);
+      console.log('Request body:', { [field]: value });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error('Failed to update course:', {
+          status: response.status,
+          statusText: response.statusText,
+          errorData
+        });
+        throw new Error('Failed to update course');
+      } else {
+        console.log('Course updated successfully:', {
+          status: response.status,
+          statusText: response.statusText
+        });
+      }
+
+      if (field === 'title') {
+        setLocalTitle(value);
+      } else if (field === 'description') {
+        setLocalDescription(value);
+      }
     } catch (error) {
       console.error('Error updating course:', error);
     }
@@ -105,8 +129,25 @@ export function CourseCard({
     }
   };
 
+  const handleDelete = async () => {
+    try {
+      const response = await fetch(`${API_ENDPOINTS.courses}/${id}`, {
+        method: 'DELETE',
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to delete course');
+      }
+
+      console.log('Course deleted successfully');
+      onImageUpdate?.(); // Refresh the course list
+    } catch (error) {
+      console.error('Error deleting course:', error);
+    }
+  };
+
   return (
-    <div className="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105">
+    <div className="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105 h-[28rem] flex flex-col justify-between">
       <div className="relative aspect-video bg-gray-100">
         {isAuthenticated && (
           <label className={`absolute top-2 right-2 bg-white rounded-lg px-3 py-1 cursor-pointer 
@@ -137,43 +178,38 @@ export function CourseCard({
           className="w-full h-full object-cover object-center"
         />
       </div>
-      <div className="p-6">
-        <h3 className="text-xl font-bold text-gray-900 mb-2">
+      <div className="p-6 flex-grow">
+        <h3 className="text-xl font-bold text-gray-900 mb-2 leading-tight text-left">
           <EditableText
-            text={title}
+            text={localTitle}
             onSave={(value) => handleSaveText('title', value)}
           />
         </h3>
-        <div className="text-gray-600 mb-4">
+        <div className="text-gray-600 mb-4 leading-tight text-left">
           <EditableText
-            text={description}
+            text={localDescription}
             onSave={(value) => handleSaveText('description', value)}
             type="textarea"
           />
         </div>
-        <div className="flex items-center mb-4">
-          <div className="flex items-center text-yellow-400">
-            {[...Array(5)].map((_, i) => (
-              <Star
-                key={i}
-                className={`w-4 h-4 ${i < Math.floor(rating) ? 'fill-current' : 'stroke-current'}`}
-              />
-            ))}
-          </div>
-          <span className="ml-2 text-gray-600">{rating}</span>
-          <span className="mx-2 text-gray-400">•</span>
-          <span className="text-gray-600">{studentsCount.toLocaleString()} students</span>
-        </div>
-        <div className="flex items-center justify-between">
-          <span className="text-2xl font-bold text-gray-900">{price}</span>
-          <a
-            href={udemy_url}
-            className="inline-flex items-center px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+      </div>
+      <div className="flex items-center justify-between p-6">
+        <span className="text-2xl font-bold text-gray-900">$99</span>
+        <a
+          href={udemy_url}
+          className="inline-flex items-center px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+        >
+          Learn More
+          <ArrowRight className="ml-2 w-5 h-5 text-[#34cddc]" />
+        </a>
+        {isAuthenticated && (
+          <button
+            onClick={handleDelete}
+            className="ml-4 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
           >
-            Enroll Now
-            <ArrowRight className="ml-2 w-5 h-5 text-[#34cddc]" />
-          </a>
-        </div>
+            Delete
+          </button>
+        )}
       </div>
     </div>
   );

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { CourseCard } from './CourseCard';
 import { GraduationCap, Users, Trophy, Brain } from 'lucide-react';
 import { API_ENDPOINTS } from '../../config/api';
+import { useAuth } from '../../context/AuthContext';
+import { NewCourseCard } from './NewCourseCard';
 
 // Type for our course data
 interface Course {
@@ -43,6 +45,9 @@ const features = [
 export function CoursesPage() {
   const [courses, setCourses] = useState<Course[]>([]);
   const [refreshTrigger, setRefreshTrigger] = useState(0);
+
+  const { user } = useAuth();
+  const isAdmin = user?.email === 'aaron.pickrell@gmail.com';
 
   // Add refresh function
   const refreshCourses = () => {
@@ -88,21 +93,37 @@ export function CoursesPage() {
         <h1 className="text-4xl font-bold text-white mb-8">Available Courses</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {courses.map((course) => (
-            <CourseCard 
+            <div key={course.id}>
+              <CourseCard 
+                id={course.id}
+                title={course.title}
+                description={course.description}
+                imageUrl={course.image_url}
+                difficulty_level={course.difficulty_level}
+                price={course.price}
+                rating={parseFloat(course.rating)}
+                studentsCount={course.students_count}
+                udemy_url={course.udemy_url}
+                onImageUpdate={refreshCourses}
+              />
+            </div>
+          ))}
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {courses.map(course => (
+            <NewCourseCard
               key={course.id}
               id={course.id}
               title={course.title}
               description={course.description}
               imageUrl={course.image_url}
-              difficulty_level={course.difficulty_level}
-              price={course.price}
-              rating={parseFloat(course.rating)}
-              studentsCount={course.students_count}
+              price="$99"
               udemy_url={course.udemy_url}
-              onImageUpdate={refreshCourses}
+              onDelete={refreshCourses}
             />
           ))}
         </div>
+        console.log('Courses array:', courses);
       </div>
     </div>
   );

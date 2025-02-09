@@ -27,7 +27,12 @@ function App() {
   }, []);
 
   return (
-    <Router>
+    <Router
+      future={{
+        v7_startTransition: true,
+        v7_relativeSplatPath: true
+      }}
+    >
       <DeveloperModeProvider isDeveloperMode={isDeveloperMode}>
         <AuthProvider>
           <div className="min-h-screen bg-gray-900">
